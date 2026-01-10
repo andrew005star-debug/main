@@ -14,16 +14,20 @@ if token is None:
     raise SystemExit(1)
 
 dp = Dispatcher()
+count = 0
 
 @dp.message(CommandStart())
 async def cmd_start(message: Message):
-    # ответь пользователю текстом
     await message.answer("Привет, мир!!!")
 
 @dp.message(F.text)
 async def echo(message: Message):
-    # отправь обратно то же самое, что написал пользователь
-    await message.answer(message.text)
+    global count
+    if count == 0:
+        await message.answer("Арген, завязывай страдать хуйнёй и учи Solidity")
+    else:
+        await message.answer(message.text)
+    count += 1
 
 async def main():
    bot = Bot(token = token)
