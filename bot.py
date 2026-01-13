@@ -9,25 +9,31 @@ from aiogram.filters import CommandStart
 
 load_dotenv()
 token = os.getenv("BOT_TOKEN")
-if token is None:
+if not token:
     print("Токена нет")
     raise SystemExit(1)
 
 dp = Dispatcher()
-count = 0
+us_count = {}
+us_name = {}
 
 @dp.message(CommandStart())
 async def cmd_start(message: Message):
-    await message.answer("Привет, мир!!!")
+    us_count[message.from_user.id] = 0
+    await message.answer("Привет, друг!!!")
 
 @dp.message(F.text)
-async def echo(message: Message):
-    global count
-    if count == 0:
-        await message.answer("Арген, завязывай страдать хуйнёй и учи Solidity")
+async def ansToUs(message: Message):
+    if message.from_user.id not in us_count:
+        us_count[message.from_user.id] = 0
+    if us_count[message.from_user.id] == 0:
+        await message.answer("Сначала скажи мне как тебя зовут")
+    elif us_count[message.from_user.id] == 1:
+        us_name[message.from_user.id] = message.text
+        await message.answer(f"Завязывай страдать хуйнёй, {us_name[message.from_user.id]}, учи Solidity!!!")
     else:
         await message.answer(message.text)
-    count += 1
+    us_count[message.from_user.id] +=1
 
 async def main():
    bot = Bot(token = token)
