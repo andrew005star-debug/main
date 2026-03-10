@@ -9,16 +9,16 @@
 				"inputs": [
 					{
 						"internalType": "string",
-						"name": "_master_name",
+						"name": "_address",
 						"type": "string"
 					},
 					{
-						"internalType": "string",
-						"name": "_Pets_name",
-						"type": "string"
+						"internalType": "uint256",
+						"name": "_balance",
+						"type": "uint256"
 					}
 				],
-				"name": "addPet",
+				"name": "addBalance",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -26,22 +26,17 @@
 			{
 				"inputs": [
 					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"name": "base_balance",
+				"outputs": [
+					{
 						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
-					}
-				],
-				"name": "base_Pets",
-				"outputs": [
-					{
-						"internalType": "string",
-						"name": "master_name",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "Pets_name",
-						"type": "string"
 					}
 				],
 				"stateMutability": "view",
@@ -61,7 +56,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"basePets.sol": "SimpleStorage"
+			"Balances.sol": "SimpleStorage"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -75,12 +70,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"basePets.sol": {
-			"keccak256": "0x513c45f2194522f286730809b6850750a366784a3df4758634429908286cc9f3",
+		"Balances.sol": {
+			"keccak256": "0x433fdef39e6609e563d85dbb88ba519b474771dd115517a412f68e49d16d75a1",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://335819a9dca3ebaaa82a96eef0278c3799088adebdd13e849a1c429b662f94e1",
-				"dweb:/ipfs/QmWcH8vRoVKKKCZZCWK4aR8vhC5yQbWHZi2PVYQgvgY2Tp"
+				"bzz-raw://e50550b21b5189fa5ebf3784b6fd3216ba98bd55bce7ecdcc470a79c15e57620",
+				"dweb:/ipfs/Qmb8DsgV8r7Nr3Vkk3yyxHEafkLg3VntSzxYaHwoXziC84"
 			]
 		}
 	},
