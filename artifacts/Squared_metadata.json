@@ -83,7 +83,7 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "_favoriteNumber",
+						"name": "_newFavNumber",
 						"type": "uint256"
 					}
 				],
@@ -106,7 +106,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"SimpleStorage.sol": "SimpleStorage"
+			"Squared.sol": "Squared"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -126,6 +126,14 @@
 			"urls": [
 				"bzz-raw://425f92037df5ba3b30271f32e8388b1813fd1316272768b206d601de0af74b7b",
 				"dweb:/ipfs/QmPbpJohn86SQJ64yQwHSdp9LfAmfijZ9diig6VnCDsYtG"
+			]
+		},
+		"Squared.sol": {
+			"keccak256": "0x3f91eddb44de9b1345837b7caa2060fddd34bfd9698589c4c99b42076d9a695f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://3dbd39acaed53174e7b8d86a3495a12444f4dc4f534ffc52111af5d8ff248394",
+				"dweb:/ipfs/QmUzPvtMm36CbMZi7jG4Z2aUnUU4XtJZykRpp4iLzGFQ43"
 			]
 		}
 	},
