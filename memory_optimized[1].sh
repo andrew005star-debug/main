@@ -1,6 +1,6 @@
 #!/system/bin/sh
 
-# Ждём, пока система полностью загрузится
+# Ждём полной загрузки системы
 sleep 30
 
 # =======================
@@ -10,7 +10,7 @@ sleep 30
 echo 1 > /sys/block/zram0/reset
 echo 4294967296 > /sys/block/zram0/disksize   # 4 GB
 /system/bin/toybox mkswap /dev/block/zram0
-/system/bin/toybox swapon /dev/block/zram0
+/system/bin/toybox swapon -p 100 /dev/block/zram0
 
 # =======================
 # 2. swapfile
@@ -20,7 +20,7 @@ if [ ! -f /data/swapfile ]; then
     chmod 600 /data/swapfile
     /system/bin/toybox mkswap /data/swapfile
 fi
-/system/bin/toybox swapon /data/swapfile
+/system/bin/toybox swapon -p 10 /data/swapfile
 
 # =======================
 # 3. swappiness
@@ -28,7 +28,12 @@ fi
 echo 120 > /proc/sys/vm/swappiness
 
 # =======================
-# 4. LMK tuning
+# 4. LMKD (современный LMK)
 # =======================
-# уменьшаем агрессивность Low Memory Killer
-echo "1536,2048,4096,6144,8192,10240" > /sys/module/lowmemorykiller/parameters/minfree
+settings put global lmkd_use_psi false
+settings put global lmkd_minfree_levels "1536,2048,4096,6144,8192,10240"
+settings put global lmkd_kill_heaviest_task false
+settings put global lmkd_kill_timeout_ms 1000
+
+# перезапуск lmkd для применения
+killall lmkd 2>/dev/null
